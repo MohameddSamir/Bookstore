@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore</title>
+    <link rel="stylesheet" th:href="@{/main-style.css}">
+</head>
+<body>
+
+<header>
+    <h1>Welcome to The Bookstore</h1>
+</header>
+
+<div class="top-right-container" sec:authorize="hasRole('USER')">
+    <form th:action="@{/logout}" method="post">
+        <a th:href="@{/cart(email=${#authentication.name})}" class="cart-link">Your Cart</a>
+
+        <input type="submit" value="Logout" class="logout">
+    </form>
+</div>
+
+<section class="row">
+    <div class="header">
+        <h2>Most Recent</h2>
+        <a th:href="@{/store/recent}" class="see-all">See All</a>
+    </div>
+    <div class="book-card-container">
+        <div th:each="book:${mostRecentHome}" class="book-card">
+            <a th:href="@{/store/book/{bookId}(bookId=${book.id})}"> <img th:src="${book.image_url}" alt="Book Cover" class="book-cover"> </a>
+            <div class="book-details">
+                <h3 th:text="${book.title}" class="book-title"></h3>
+                <p th:text="${book.authors}" class="author"></p>
+                <a th:href="@{/add-to-cart/{bookId}(bookId=${book.id}, email=${#authentication.name})}"
+                   class="add-to-cart-btn">Add To Cart</a>
+            </div>
+        </div>
+    </div>
+</section>
+<br><br>
+<section class="row">
+    <div class="header">
+        <h2>Best Seller</h2>
+        <a th:href="@{/store/best-seller}" class="see-all">See All</a>
+    </div>
+    <div class="book-card-container">
+        <div th:each="book:${bestSellerHome}" class="book-card">
+            <a th:href="@{/store/book/{bookId}(bookId=${book.id})}"> <img th:src="${book.image_url}" alt="Book Cover" class="book-cover"> </a>
+            <div class="book-details">
+                <h3 th:text="${book.title}" class="book-title"></h3>
+                <p th:text="${book.authors}" class="author"></p>
+                <a th:href="@{/add-to-cart/{bookId}(bookId=${book.id}, email=${#authentication.name})}"
+                   class="add-to-cart-btn">Add To Cart</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<br><br>
+<section class="row">
+    <div class="header">
+        <h2>Top Rated</h2>
+        <a th:href="@{/store/top-rated}" class="see-all">See All</a>
+    </div>
+    <div class="book-card-container">
+        <div th:each="book:${TopRatedHome}" class="book-card">
+            <a th:href="@{/store/book/{bookId}(bookId=${book.id})}"> <img th:src="${book.image_url}" alt="Book Cover" class="book-cover"> </a>
+            <div class="book-details">
+                <h3 th:text="${book.title}" class="book-title"></h3>
+                <p th:text="${book.authors}" class="author"></p>
+                <a th:href="@{/add-to-cart/{bookId}(bookId=${book.id}, email=${#authentication.name})}"
+                   class="add-to-cart-btn">Add To Cart</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<br><br>
+<section class="row">
+    <div class="header">
+        <h2>Most Popular</h2>
+        <a th:href="@{/store/most-popular}" class="see-all">See All</a>
+    </div>
+    <div class="book-card-container">
+        <div th:each="book:${MostPopularHome}" class="book-card">
+            <a th:href="@{/store/book/{bookId}(bookId=${book.id})}"> <img th:src="${book.image_url}" alt="Book Cover" class="book-cover"> </a>
+            <div class="book-details">
+                <h3 th:text="${book.title}" class="book-title"></h3>
+                <p th:text="${book.authors}" class="author"></p>
+                <a th:href="@{/add-to-cart/{bookId}(bookId=${book.id}, email=${#authentication.name})}"
+                   class="add-to-cart-btn">Add To Cart</a>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

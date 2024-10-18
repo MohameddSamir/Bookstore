@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>login</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+    <link th:href="@{/login-register-style.css}" rel="stylesheet">
+</head>
+<body>
+<form th:action="@{/authenticateTheUser}" method="post">
+
+    <div th:if="${param.error}">
+        <p class="error">Wrong Email Or Password</p>
+    </div>
+
+    <div th:if="${param.logout}">
+        <p class="logout">You Logged Out Successfully</p>
+    </div>
+
+    <h3>Login</h3>
+
+    <label for="email">Email</label>
+    <input type="text" placeholder="Email" id="email" name="username">
+
+
+    <label for="password">Password</label>
+    <input type="password" placeholder="Password" id="password" name="password">
+
+    <p class="sign-up">Don't have an account? <a th:href="@{/register}">Sign up now</a></p>
+    <button>Log In</button>
+
+</form>
+</body>
+</html>

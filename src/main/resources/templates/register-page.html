@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>register</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" th:href="@{/login-register-style.css}">
+</head>
+<body>
+<form th:action="@{/save}" th:object="${user}" method="post">
+    <h3>Register</h3>
+
+    <input type="text" th:field="*{firstName}" placeholder="First Name">
+    <span th:if="${#fields.hasErrors('firstName')}"
+          th:errors="*{firstName}" class="error"></span>
+
+    <input type="text" th:field="*{lastName}" placeholder="Last Name">
+
+    <input type="text" th:field="*{email}" name="email" placeholder="Email">
+    <span th:if="${#fields.hasErrors('email')}"
+          th:errors="*{email}" class="error"></span>
+
+    <input type="password" th:field="*{password}" placeholder="Password">
+
+    <button type="submit">Register</button>
+
+</form>
+</body>
+</html>

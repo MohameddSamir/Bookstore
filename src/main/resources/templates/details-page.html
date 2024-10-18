@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book details</title>
+    <link rel="stylesheet" th:href="@{/details-page-style.css}">
+</head>
+<body>
+<div class="container">
+    <div class="book-cover">
+        <img th:src="${book.image_url}" th:alt="book.title">
+    </div>
+    <div class="book-details">
+        <h1 th:text="${book.title}"></h1>
+        <p th:text="'By: '+${book.authors}"></p>
+        <p th:text="'$'+${book.price}" class="price"></p>
+        <h4 th:text=" 'Published in ' + ${book.publication_year}"></h4>
+        <br>
+        <a th:href="@{/add-to-cart/{bookId}(bookId=${book.id}, email=${#authentication.name})}"
+           class="add-to-cart">Add to Cart</a>
+    </div>
+</div>
+</body>
+</html>

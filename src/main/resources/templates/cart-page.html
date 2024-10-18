@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+
+    <link th:href="@{/cart-style.css}" rel="stylesheet">
+</head>
+<body>
+<h3>Your Cart</h3>
+<div class="card-container">
+    <div class="card" th:each="book:${books}">
+        <img th:src="${book.image_url}" alt="Book Image">
+        <div class="card-info">
+            <h3 th:text="${book.title}"></h3>
+            <p th:text="${book.authors}"></p>
+            <p th:text="'$'+${book.price}" class="price" ></p>
+            <p> <a th:href="@{/buyBook}" class="buy-btn">Buy</a>
+                <a th:href="@{/deleteBook/{bookId}(bookId=${book.id}, email=${#authentication.name})}"
+                   onclick="if (!(confirm('Are you sure you want to delete this Book?'))) return false"
+                   class="delete-btn">Delete From Cart</a></p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
