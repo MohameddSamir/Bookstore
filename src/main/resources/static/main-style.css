@@ -80,7 +80,7 @@ h2 {
     margin-bottom: 10px;
 }
 
-.add-to-cart-btn {
+.add-to-cart-btn, .add-new-book-btn, .logout{
     background-color: #007bff;
     color: white;
     border: none;
@@ -98,25 +98,32 @@ h2 {
 }
 
 .top-right-container {
-    position: absolute;
-    top: 110px;
-    right: 100px;
     display: flex;
-    gap: 10px;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px;
+    position: absolute;
+    top: 100px;
+    right: 100px;
+}
+
+.top-right-container div {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .logout {
-    padding: 10px 20px;
     background-color: red;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 .cart-link{
-    margin-right:40px;
+    margin-right:15px;
+    margin-top:10px;
     text-decoration:none;
     font-weight:bold;
+}
+
+.add-new-book-btn {
+    background-color: green;
 }

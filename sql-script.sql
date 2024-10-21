@@ -22,7 +22,8 @@ CREATE TABLE user(
 );
 
 INSERT INTO user VALUES
-(1,"Mohamed","Samir","mohamed@gmail.com","{noop}1234","ROLE_USER",1);
+(1,"Mohamed","Samir","mohamed@gmail.com","{noop}1234","ROLE_ADMIN",1),
+(2,"jack","sparo","jack@gmail.com","{noop}1234","ROLE_USER",1);
 
 CREATE TABLE user_book(
 	book_id INT NOT NULL,

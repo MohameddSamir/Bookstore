@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +19,10 @@
         <br>
         <a th:href="@{/add-to-cart/{bookId}(bookId=${book.id}, email=${#authentication.name})}"
            class="add-to-cart">Add to Cart</a>
+
+        <a th:href="@{/book/delete(bookId=${book.id})}" sec:authorize="hasRole('ADMIN')"
+           onclick="if (!(confirm('Are you sure you want to delete this Book?'))) return false"
+           class="delete-btn">Delete Book</a>
     </div>
 </div>
 </body>

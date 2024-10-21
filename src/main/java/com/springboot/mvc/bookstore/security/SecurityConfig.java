@@ -34,6 +34,7 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(configure->{
                     configure.requestMatchers(publicUrls).permitAll();
+                    configure.requestMatchers("/book/**").hasRole("ADMIN");
                     configure.anyRequest().authenticated();
                 })
                 .formLogin(login->
@@ -43,6 +44,10 @@ public class SecurityConfig {
                                 .defaultSuccessUrl("/store/home",true)
                                 .permitAll())
                 .logout(logout->logout.permitAll())
+                .exceptionHandling(configure->
+                        configure
+                                .accessDeniedPage("/access-denied")
+                )
         ;
 
         return http.build();

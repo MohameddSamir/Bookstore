@@ -3,6 +3,7 @@ package com.springboot.mvc.bookstore.service;
 import com.springboot.mvc.bookstore.dao.BookDAO;
 import com.springboot.mvc.bookstore.entity.Book;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -55,5 +56,17 @@ public class BookServiceImpl implements BookService{
     @Override
     public Book findBookById(int id) {
         return dao.findBookById(id);
+    }
+
+    @Override
+    @Transactional
+    public void save(Book book) {
+        dao.save(book);
+    }
+
+    @Override
+    @Transactional
+    public void deleteBookById(int id) {
+        dao.deleteBookById(id);
     }
 }

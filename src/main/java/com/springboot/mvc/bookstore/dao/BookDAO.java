@@ -14,4 +14,6 @@ public interface BookDAO {
     List<Book> findMostPopularAll();
     List<Book> findTopRatedAll();
     Book findBookById(int id);
+    void save(Book book);
+    void deleteBookById(int id);
 }

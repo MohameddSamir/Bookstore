@@ -50,3 +50,15 @@ body {
 .add-to-cart:hover {
     background-color: #0056b3;
 }
+.delete-btn {
+    background-color:red;
+    color: white;
+    border: none;
+    text-decoration:none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 150px;
+    transition: background-color 0.3s ease;
+}

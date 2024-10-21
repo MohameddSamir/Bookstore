@@ -56,4 +56,15 @@ public class BookDAOImpl implements BookDAO{
         return entityManager.find(Book.class,id);
     }
 
+    @Override
+    public void save(Book book) {
+        entityManager.persist(book);
+    }
+
+    @Override
+    public void deleteBookById(int id) {
+        Book book = entityManager.find(Book.class,id);
+        entityManager.remove(book);
+    }
+
 }

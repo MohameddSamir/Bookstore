@@ -68,4 +68,9 @@ public class UserController {
         userService.deleteBookFromCart(bookId,email);
         return "redirect:/cart?email="+email;
     }
+
+    @GetMapping("/access-denied")
+    public String accessDenied(){
+        return "access-denied-page";
+    }
 }
